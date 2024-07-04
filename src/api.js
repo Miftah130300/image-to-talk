@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const apiKey = 'YWl0b29sc2Z4bUBnbWFpbC5jb20:edOdSn7wseCKh5MoIQu63';
+const apiKey = 'YnJpbGVvNzlAZ21haWwuY29t:JreXgngkvwyWbJo76n8mr';
 const talksLink = 'https://api.d-id.com/talks';
 
 // idle talks - no talk

@@ -9,7 +9,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false); 
   const [uploadMessage, setUploadMessage] = useState('');
 
-  const apiKey = 'YWl0b29sc2Z4bUBnbWFpbC5jb20:edOdSn7wseCKh5MoIQu63';
+  const apiKey = 'YnJpbGVvNzlAZ21haWwuY29t:JreXgngkvwyWbJo76n8mr';
 
   const onChangeFile = async (e) => {
     const data = e.target.files[0];
