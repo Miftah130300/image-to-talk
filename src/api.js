@@ -52,15 +52,27 @@ const getTalks = async (id) => {
   };
 
   try {
-    const response = await fetch(`${talksLink}/${id}`, options);
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error('Error response:', errorData);
-      throw new Error(`Error ${response.status}: ${response.statusText}`);
-    }
-    const data = await response.json();
-    console.log('Response from GET talks:', data);
-    return data.pending_url; 
+    const fetchTalks = async () => {
+      const response = await fetch(`${talksLink}/${id}`, options);
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error response:', errorData);
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+      const data = await response.json();
+      console.log('Response from GET talks:', data);
+      if (data.status === 'done') {
+        return data.result_url;
+      } else if (data.status === 'started') {
+        // if the status still started, recall api
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        return fetchTalks();
+      } else {
+        throw new Error(`Unexpected status: ${data.status}`);
+      }
+    };
+
+    return await fetchTalks();
   } catch (error) {
     console.error('Error getting talks:', error);
     throw error;

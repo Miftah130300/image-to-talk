@@ -60,6 +60,7 @@ const generateHandler = async () => {
         
         setVideoUrl(result);
         console.log('Generated video URL:', result);
+        return result
       } catch (error) {
         console.error('Error generating talk:', error);
       } finally {
